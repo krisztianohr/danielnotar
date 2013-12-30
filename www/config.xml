@@ -12,13 +12,14 @@
     <name>Daniel Notar</name>
 
     <description>
-      DR. DÁNIEL CSABA KÖZJEGYZŐ mobil applikációja.. 
+      DR. DÁNIEL CSABA KÖZJEGYZŐ mobil applikációja.
     </description>
 
     <author href="http://www.webmark.hu" email="info@webmark.hu">
       Webmark Europe Kft.
     </author>
 
+    <access origin="http://app.danielnotar.com" />
     <access origin="http://danielnotar.com" subdomains="true" />
     <access origin="http://googleapis.com" subdomains="true" />
     
