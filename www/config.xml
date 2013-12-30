@@ -14,12 +14,11 @@
     </description>
 
     <author href="http://www.webmark.hu" email="info@webmark.hu">
-      Hardeep Shoker 
+      Webmark Europe Kft.
     </author>
 
-    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
-    <access origin="http://app.danielnotar.com" />
-    <access origin="http://fonts.googleapis.com" />
+    <access origin="http://danielnotar.com" subdomains="true" />
+    <access origin="http://googleapis.com" subdomains="true" />
     
     <gap:platform name="android" />
     
