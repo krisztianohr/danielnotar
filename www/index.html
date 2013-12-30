@@ -28,12 +28,41 @@
     <body>
 		<div id="content">
 		  <div id="app-logo"></div>
-		  <div id="startApp"><a href="#" onclick="app.initialize();">LOADING...</a></div>
+		  <div id="startApp"><a href="#">LOADING...</a></div>
 		</div>
         <script type="text/javascript" src="cordova-2.5.0.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+		<script type="text/javascript" charset="utf-8">	
+			// Wait for Cordova to load
+			//
+			document.addEventListener("deviceready", onDeviceReady, false);
+		
+			// Global InAppBrowser reference
+			var iabRef = null;
+		
+			function iabLoadStart(event) {
+				//alert(event.type + ' - ' + event.url);
+			}
+		
+			function iabLoadStop(event) {
+				//alert(event.type + ' - ' + event.url);
+			}
+		
+			function iabClose(event) {
+				 //alert(event.type);
+				 iabRef.removeEventListener('loadstart', iabLoadStart);
+				 iabRef.removeEventListener('loadstop', iabLoadStop);
+				 iabRef.removeEventListener('exit', iabClose);
+			}
+		
+			// Cordova is ready
+			//
+			function onDeviceReady() {
+				 iabRef = window.open('http://app.danielnotar.com', '_self', 'location=no');
+				 iabRef.addEventListener('loadstart', iabLoadStart);
+				 iabRef.addEventListener('loadstop', iabLoadStop);
+				 iabRef.addEventListener('exit', iabClose);
+			}
+	
+		</script>
     </body>
 </html>
