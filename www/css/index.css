@@ -1,0 +1,93 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    width:100%;
+}
+
+html {}
+
+body {
+	background:#efb65b;
+	margin:0;
+	padding:0;
+	font-family: 'Andada', serif;
+}
+
+a {
+	color:#610000;
+	text-decoration:none;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+	margin:0;
+}
+
+img {
+	border:none;
+}
+
+/*-------main structure*/
+
+/*-----content*/
+#content {
+	background: -webkit-linear-gradient(top, #fff0c1, #efb65b);
+	background: -moz-linear-gradient(top, #fff0c1, #efb65b);
+	background: -ms-linear-gradient(top, #fff0c1, #efb65b);
+	background: -o-linear-gradient(top, #fff0c1, #efb65b);
+	text-align:center;
+}
+
+/*-----------------------------------------screen1*/
+#app-logo {
+	width:100%;
+	height:250px;
+	background:url(../img/app-logo.png) no-repeat center;
+	padding:250px 0 0;
+}
+#startApp a {
+	display:block;
+	font-size:66px;
+	color:#ffffc3;
+	text-align:center;
+	text-shadow:0 0 5px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+}
+
+/*-----------------------------------------screen2*/
+
+
+
+/*common*/
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.clear {
+	clear:both;
+}
