@@ -21,5 +21,10 @@
     <access origin="http://googleapis.com" subdomains="true" />
     
     <gap:platform name="android" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
+    <feature name="http://api.phonegap.com/1.0/network"/>
     
 </widget>
