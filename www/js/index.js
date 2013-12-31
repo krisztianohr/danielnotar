@@ -36,14 +36,18 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-    	alert(1);
-    	alert('Application online: ' + checkConnection());
-        app.receivedEvent('deviceready');               
+    onDeviceReady: function() {    	        
+
+		alert(1);
+		alert( checkConnection() );
+		alert( checkLanguage() );   
+		
+		app.receivedEvent('deviceready');                       
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+    	alert(2);
         //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
     } 
     
@@ -57,4 +61,16 @@ function checkConnection() {
     } else {
         return true;    
     }
+}
+
+function checkLanguage() {
+	navigator.globalization.getPreferredLanguage(
+	  function (language) { 
+	  	appLanguage = language.value; 
+	  },
+	  function () { 
+	  	appLanguage = ""; 
+	  }
+	);		
+	return appLanguage;
 }
