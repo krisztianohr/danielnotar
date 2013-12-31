@@ -38,15 +38,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        app.checkConnection();        
-    },
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
-    },
-    
-    checkConnection: function() {
         var networkState = navigator.connection.type;
 
         var states = {};
@@ -58,7 +50,18 @@ var app = {
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.NONE]     = 'No network connection';
 
-		document.getElementById("startApp").innerHTML = states[networkState];
-    }    
+		alert('Connection type: ' + states[networkState]);
+		
+		navigator.globalization.getPreferredLanguage(
+		    function (language) {alert('language: ' + language.value + '\n');},
+		    function () {alert('Error getting language\n');}
+		);		
+               
+    },
+
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
+    } 
     
 };
