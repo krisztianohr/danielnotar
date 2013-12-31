@@ -5,8 +5,7 @@
     versionCode = "10" 
     version     = "1.0.0" >
 
-    <!-- versionCode is optional and Android only -->
-    
+    <!-- versionCode is optional and Android only -->    
     <preference name="phonegap-version" value="3.0.0" />
 
     <name>Daniel Notar</name>
@@ -18,21 +17,58 @@
     <author href="http://www.webmark.hu" email="info@webmark.hu">
       Webmark Europe Kft.
     </author>
-
-    <access origin="http://app.danielnotar.com" />
-    <access origin="http://danielnotar.com" subdomains="true" />
-    <access origin="http://googleapis.com" subdomains="true" />
-    <access origin="http://itworx.hu" subdomains="true" />
     
+	<!-- ICONS -->        
+    <icon src="img/icons/icon.png" /> <!-- default 512 pixels -->
+        
+    <icon src="img/icons/ios/icon57.png" gap:platform="ios" width="57" height="57" /> <!-- iPhone & iPod Touch non retina iOS6 -->
+    <icon src="img/icons/ios/icon72.png" gap:platform="ios" width="72" height="72" /> <!-- iPad non retina iOS6 -->
+    <icon src="img/icons/ios/icon76.png" gap:platform="ios" width="76" height="76" /> <!-- iPad non retina iOS7 -->
+    <icon src="img/icons/ios/icon114.png" gap:platform="ios" width="114" height="114" /> <!-- iPhone & iPod Touch retina iOS6 -->
+    <icon src="img/icons/ios/icon120.png" gap:platform="ios" width="120" height="120" /> <!-- iPhone & iPod Touch retina iOS7 -->
+    <icon src="img/icons/ios/icon144.png" gap:platform="ios" width="144" height="144" /> <!-- iPad retina iOS6 -->
+    <icon src="img/icons/ios/icon152.png" gap:platform="ios" width="152" height="152" /> <!-- iPad retina iOS7 -->
+        
+    <icon src="img/icons/android/ldpi.png" gap:platform="android" gap:density="ldpi" /> <!-- 36 pixels -->
+    <icon src="img/icons/android/mdpi.png" gap:platform="android" gap:density="mdpi" /> <!-- 48 pixels -->
+    <icon src="img/icons/android/hdpi.png" gap:platform="android" gap:density="hdpi" /> <!-- 72 pixels -->
+    <icon src="img/icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 96 pixels -->
+    <icon src="img/icons/android/xxhdpi.png" gap:platform="android" gap:density="xxhdpi" /> <!-- 144 pixels -->
+    <icon src="img/icons/android/xxxhdpi.png" gap:platform="android" gap:density="xxxhdpi" /> <!-- 192 pixels -->
+
+	<preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+                
+    <!-- iOS PREFERENCES -->    
+    <preference name="target-device" value="universal" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="exit-on-suspend" value="false" />
+
+    <preference name="webviewbounce" value="false" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="auto-hide-splash-screen" value="true" /> <!-- if set to false, the splash screen must be hidden using a JavaScript API -->
+        
+    <!-- ANDROID PREFERENCES -->        
     <gap:platform name="android" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
+    <preference name="android-windowSoftInputMode" value="stateVisible|adjustPan" />    
     
+    <!-- PHONEGAP API FEATURES PREFERENCES -->
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.network-information" />
-    
+        
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
+    
+    <!-- URL WHITELIST -->
+    <access origin="http://app.danielnotar.com" />
+    <access origin="http://danielnotar.com" subdomains="true" />
+    <access origin="http://googleapis.com" subdomains="true" />
+    <access origin="http://itworx.hu" subdomains="true" />    
     
 </widget>
