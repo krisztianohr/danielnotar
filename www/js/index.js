@@ -36,9 +36,11 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        var networkState = navigator.connection.type;
+        document.getElementById("startApp").innerHTML = networkState;
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
+        //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
     }
 };
