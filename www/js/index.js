@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+var randomnumber = Math.floor(Math.random()*11000000);
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -37,6 +39,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var ref = window.open('http://app.danielnotar.com', '_self', 'location=no');
+        var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
     }
 };
