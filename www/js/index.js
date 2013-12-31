@@ -37,12 +37,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-
-        var networkState = navigator.onLine;
-
-		alert('Connection type: ' + states[networkState]);
-               
+    	alert(1);
+    	alert('Application online: ' + checkConnection());
+        app.receivedEvent('deviceready');               
     },
 
     // Update DOM on a Received Event
@@ -51,3 +48,13 @@ var app = {
     } 
     
 };
+
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    if (networkState == Connection.UNKNOWN || networkState == Connection.NONE) {
+        return false;   
+    } else {
+        return true;    
+    }
+}
