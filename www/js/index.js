@@ -17,6 +17,7 @@
  * under the License.
  */
 var randomnumber = Math.floor(Math.random()*11000000);
+var appLanguage = "hu"; 
 
 var app = {
     // Application Constructor
@@ -37,18 +38,21 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {    	        
-
-		alert(1);
-		alert( checkConnection() );
-		alert( checkLanguage() );   
-		
-		app.receivedEvent('deviceready');                       
+		checkLanguage();
+		if( checkConnection() ) {
+			app.receivedEvent('deviceready');
+		} else {
+			if (appLanguage == "hu") {
+				document.getElementById("startApp").innerHTML = "Nem tal&aacute;lhat&oacute; internet kapcsolat.<br>K&eacute;rem kapcsolja be az internetet &eacute;s pr&oacute;b&aacute;lja &uacute;jra.";
+			} else {
+				document.getElementById("startApp").innerHTML = "No internet connection detected!<br>Please turn on internet and try again.";
+			}
+		}                    
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-    	alert(2);
-        //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
+        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no');
     } 
     
 };
@@ -64,13 +68,13 @@ function checkConnection() {
 }
 
 function checkLanguage() {
-	navigator.globalization.getPreferredLanguage(
+	navigator.globalization.getLocaleName(
 	  function (language) { 
 	  	appLanguage = language.value; 
 	  },
 	  function () { 
 	  	appLanguage = ""; 
 	  }
-	);		
-	return appLanguage;
+	);
+	appLanguage = appLanguage.substr(0, 2);
 }
