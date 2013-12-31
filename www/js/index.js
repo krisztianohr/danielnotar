@@ -36,11 +36,27 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        var networkState = navigator.connection.type;
-        document.getElementById("startApp").innerHTML = networkState;
+        app.checkConnection();        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
-    }
+    },
+    
+    checkConnection: function() {
+        var networkState = navigator.connection.type;
+        var networkState2 = app.connection.type;
+
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.NONE]     = 'No network connection';
+
+		document.getElementById("startApp").innerHTML = states[networkState] + " " + networkState2;
+    }    
+    
 };
