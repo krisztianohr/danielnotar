@@ -23,6 +23,7 @@ var app = {
     initialize: function() {
         this.bindEvents();
     },
+
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
@@ -30,6 +31,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
@@ -38,6 +40,7 @@ var app = {
         app.receivedEvent('deviceready');
         app.checkConnection();        
     },
+
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         //var ref = window.open('http://app.danielnotar.com/?r=' + randomnumber, '_self', 'location=no');
@@ -45,7 +48,6 @@ var app = {
     
     checkConnection: function() {
         var networkState = navigator.connection.type;
-        var networkState2 = app.connection.type;
 
         var states = {};
         states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -56,7 +58,7 @@ var app = {
         states[Connection.CELL_4G]  = 'Cell 4G connection';
         states[Connection.NONE]     = 'No network connection';
 
-		document.getElementById("startApp").innerHTML = states[networkState] + " " + networkState2;
+		document.getElementById("startApp").innerHTML = states[networkState];
     }    
     
 };
