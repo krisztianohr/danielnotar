@@ -51,6 +51,7 @@
     <preference name="stay-in-webview" value="false" />
     <preference name="show-splash-screen-spinner" value="false" />
     <preference name="auto-hide-splash-screen" value="true" /> <!-- if set to false, the splash screen must be hidden using a JavaScript API -->
+    <preference name="EnableViewportScale" value="true" />
         
     <!-- ANDROID PREFERENCES -->        
     <gap:platform name="android" />
