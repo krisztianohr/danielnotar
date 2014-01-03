@@ -52,7 +52,7 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no');
+        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
     
 };
