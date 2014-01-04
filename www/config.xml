@@ -35,13 +35,16 @@
     <icon src="img/icons/android/xhdpi.png" gap:platform="android" gap:density="xhdpi" /> <!-- 96 pixels -->
     <icon src="img/icons/android/xxhdpi.png" gap:platform="android" gap:density="xxhdpi" /> <!-- 144 pixels -->
     <icon src="img/icons/android/xxxhdpi.png" gap:platform="android" gap:density="xxxhdpi" /> <!-- 192 pixels -->
+    
+    <!-- SPLASH SCREENS -->
+    <gap:splash src="img/icons/splash.png" /> <!-- default 320x480 pixels -->    
 
 	<preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="true" />
                 
     <!-- iOS PREFERENCES -->
     <gap:platform name="ios" />
-    <preference name="target-device" value="universal" />
+    <preference name="target-device" value="handset" />
     <preference name="prerendered-icon" value="true" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="detect-data-types" value="false" />
