@@ -37,9 +37,18 @@
     <icon src="img/icons/android/xxxhdpi.png" gap:platform="android" gap:density="xxxhdpi" /> <!-- 192 pixels -->
     
     <!-- SPLASH SCREENS -->
-    <gap:splash src="img/icons/splash.png" /> <!-- default 320x480 pixels -->    
+    <gap:splash src="img/splash/splash.png" /> <!-- default 320x480 pixels -->
+    
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="320" height="480" /> <!-- iPhone & iPod Touch non retina -->
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="640" height="960" /> <!-- iPhone & iPod Touch retina 4- -->
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="640" height="1136" /> <!-- iPhone & iPod Touch retina 5+ -->
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="1024" height="768" /> <!-- iPad non retina -->
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="768" height="1024" /> <!-- iPad non retina -->
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="2048" height="1496" /> <!-- iPad retina -->
+    <gap:splash src="img/splash/splashBlank.png" gap:platform="ios" width="1536" height="2008" /> <!-- iPad retina -->    
 
-	<preference name="orientation" value="portrait" />
+	<!-- SCREEN PREFERENCES -->
+    <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="true" />
                 
     <!-- iOS PREFERENCES -->
