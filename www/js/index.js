@@ -21,27 +21,9 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {    	        
-		checkLanguage();
+		checkLanguage();		
 		
-		pushNotification = window.plugins.pushNotification;
-		
-		if ( device.platform == 'android' || device.platform == 'Android' ) {
-			pushNotification.register(
-				successHandler,
-				errorHandler, {
-					"senderID":"replace_with_sender_id",
-					"ecb":"onNotificationGCM"
-				});
-		} else {
-			pushNotification.register(
-				tokenHandler,
-				errorHandler, {
-					"badge":"true",
-					"sound":"true",
-					"alert":"true",
-					"ecb":"onNotificationAPN"
-				});
-		}
+		alert(0);
 		
 		if( checkConnection() ) {
 			app.receivedEvent('deviceready');
@@ -56,6 +38,22 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		try {
+			pushNotification = window.plugins.pushNotification;		
+			pushNotification.register(
+				tokenHandler,
+				errorHandler, {
+					"badge":"true",
+					"sound":"true",
+					"alert":"true",
+					"ecb":"onNotificationAPN"
+			});
+		} catch(err) { 
+			txt="There was an error on this page.\n\n"; 
+			txt+="Error description: " + err.message + "\n\n"; 
+			alert(txt); 
+		} 
+		
         //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
 		alert("loaded");
     } 
