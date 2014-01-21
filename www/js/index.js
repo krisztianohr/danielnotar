@@ -1,5 +1,6 @@
 var randomnumber = Math.floor(Math.random()*11000000);
-var appLanguage = "hu"; 
+var appLanguage = "hu";
+var pushNotification;
 
 var app = {
     // Application Constructor
@@ -21,6 +22,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {    	        
 		checkLanguage();
+		
+		pushNotification = window.plugins.pushNotification;
 		
 		if ( device.platform == 'android' || device.platform == 'Android' ) {
 			pushNotification.register(
@@ -53,7 +56,8 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
+        //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
+		alert("loaded");
     } 
     
 };
