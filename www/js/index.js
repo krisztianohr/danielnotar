@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var randomnumber = Math.floor(Math.random()*11000000);
 var appLanguage = "hu"; 
 
@@ -39,6 +21,25 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {    	        
 		checkLanguage();
+		
+		if ( device.platform == 'android' || device.platform == 'Android' ) {
+			pushNotification.register(
+				successHandler,
+				errorHandler, {
+					"senderID":"replace_with_sender_id",
+					"ecb":"onNotificationGCM"
+				});
+		} else {
+			pushNotification.register(
+				tokenHandler,
+				errorHandler, {
+					"badge":"true",
+					"sound":"true",
+					"alert":"true",
+					"ecb":"onNotificationAPN"
+				});
+		}
+		
 		if( checkConnection() ) {
 			app.receivedEvent('deviceready');
 		} else {
@@ -56,6 +57,24 @@ var app = {
     } 
     
 };
+
+// PUSH subs
+// result contains any message sent from the plugin call
+function successHandler (result) {
+    alert('result = ' + result);
+}
+
+// result contains any error description text returned from the plugin call
+function errorHandler (error) {
+    alert('error = ' + error);
+}
+
+function tokenHandler (result) {
+    // Your iOS push server needs to know the token before it can push to this device
+    // here is where you might want to send it the token for later use.
+    alert('device token = ' + result);
+}
+// PUSH end
 
 function checkConnection() {
     var networkState = navigator.connection.type;
