@@ -21,9 +21,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {    	        
-		checkLanguage();		
-		
-		alert(0);
+		checkLanguage();
 		
 		if( checkConnection() ) {
 			app.receivedEvent('deviceready');
@@ -54,8 +52,7 @@ var app = {
 			alert(txt); 
 		} 
 		
-        //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
-		alert("loaded");
+        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
     
 };
@@ -63,7 +60,7 @@ var app = {
 // PUSH subs
 // result contains any message sent from the plugin call
 function successHandler (result) {
-    alert('result = ' + result);
+    //alert('result = ' + result);
 }
 
 // result contains any error description text returned from the plugin call
@@ -74,7 +71,7 @@ function errorHandler (error) {
 function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
-    alert('device token = ' + result);
+    //alert('device token = ' + result);
 	
 	$("#cms-root").load(
 		"http://dev.itworx.hu/mobile/apn_token.php",
@@ -84,27 +81,24 @@ function tokenHandler (result) {
 			r: randomnumber
 		},
 		function(r) {
-			alert(r);
+			//alert(r);
 		}
-	);	
-	
+	);
+	pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
 }
 
 // iOS
 function onNotificationAPN (event) {
-    if ( event.alert )
-    {
+    if ( event.alert ) {
         navigator.notification.alert(event.alert);
     }
 
-    if ( event.sound )
-    {
+    if ( event.sound ) {
         var snd = new Media(event.sound);
         snd.play();
     }
 
-    if ( event.badge )
-    {
+    if ( event.badge ) {
         pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
     }
 }
