@@ -3,7 +3,7 @@
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.webmark.danielnotar"
     versionCode = "10" 
-    version     = "1.0" >
+    version     = "1.0.0" >
 
     <!-- versionCode is optional and Android only -->    
     <preference name="phonegap-version" value="3.0.0" />
@@ -58,10 +58,10 @@
     <preference name="EnableViewportScale" value="true" />
         
     <!-- ANDROID PREFERENCES -->        
-    <gap:platform name="android" />
+    <!--<gap:platform name="android" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="android-windowSoftInputMode" value="stateVisible|adjustPan" />    
+    <preference name="android-windowSoftInputMode" value="stateVisible|adjustPan" />-->
     
     <!-- PHONEGAP API FEATURES PREFERENCES -->
     <gap:plugin name="org.apache.cordova.inappbrowser" />
@@ -69,6 +69,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" />
+    <gap:plugin name="de.appplant.cordova.plugin.badge" />
         
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>

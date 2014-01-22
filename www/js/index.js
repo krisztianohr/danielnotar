@@ -50,7 +50,9 @@ var app = {
 			txt="There was an error on this page.\n\n"; 
 			txt+="Error description: " + err.message + "\n\n"; 
 			alert(txt); 
-		} 
+		}
+		
+		window.plugin.notification.badge.clear();
 		
         var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
@@ -84,7 +86,7 @@ function tokenHandler (result) {
 			//alert(r);
 		}
 	);
-	pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
+	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
 }
 
 // iOS
