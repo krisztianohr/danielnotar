@@ -7,22 +7,8 @@ var pushNotification;
 // The scope of 'this' is the event. In order to call the 'receivedEvent'
 // function, we must explicity call 'app.receivedEvent(...);'
 function onDeviceReady() {
-	try {
-		pushNotification = window.plugins.pushNotification;		
-		pushNotification.register(
-			tokenHandler,
-			errorHandler, {
-				"badge":"true",
-				"sound":"true",
-				"alert":"true",
-				"ecb":"onNotificationAPN"
-		});
-	} catch(err) { 
-		txt="There was an error on this page.\n\n"; 
-		txt+="Error description: " + err.message + "\n\n"; 
-		alert(txt); 
-	}		
-	
+
+	initPushwoosh();
 	checkLanguage();
 	
 	if( checkConnection() ) {
@@ -38,6 +24,32 @@ function onDeviceReady() {
 }
 
 // PUSH subs
+
+function initPushwoosh() {
+    var pushNotification = window.plugins.pushNotification;
+    pushNotification.onDeviceReady();
+     
+    pushNotification.registerDevice({alert:true, badge:true, sound:true, pw_appid:"8E0ED-AA051", appname:"DanielNotar"},
+        function(status) {
+            var deviceToken = status['deviceToken'];
+			alert('registerDevice = ' + deviceToken);
+            console.warn('registerDevice: ' + deviceToken);
+        },
+        function(status) {
+            console.warn('failed to register : ' + JSON.stringify(status));
+            navigator.notification.alert(JSON.stringify(['failed to register ', status]));
+        }
+    );
+     
+    pushNotification.setApplicationIconBadgeNumber(0);
+     
+    document.addEventListener('push-notification', function(event) {
+        var notification = event.notification;
+        navigator.notification.alert(notification.aps.alert);
+        pushNotification.setApplicationIconBadgeNumber(0);
+    });
+}
+
 // result contains any message sent from the plugin call
 function successHandler (result) {
     //alert('result = ' + result);
