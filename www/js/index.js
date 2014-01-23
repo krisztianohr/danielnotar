@@ -22,20 +22,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {    	        
 		checkLanguage();
-		
-		if( checkConnection() ) {
-			app.receivedEvent('deviceready');
-		} else {
-			if (appLanguage == "hu") {
-				document.getElementById("startApp").innerHTML = "Nem tal&aacute;lhat&oacute; internet kapcsolat.<br>K&eacute;rem kapcsolja be az internetet &eacute;s pr&oacute;b&aacute;lja &uacute;jra.";
-			} else {
-				document.getElementById("startApp").innerHTML = "No internet connection detected!<br>Please turn on internet and try again.";
-			}
-		}                    
-    },
 
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
 		try {
 			pushNotification = window.plugins.pushNotification;		
 			pushNotification.register(
@@ -52,9 +39,22 @@ var app = {
 			alert(txt); 
 		}
 		
+		if( checkConnection() ) {
+			app.receivedEvent('deviceready');
+		} else {
+			if (appLanguage == "hu") {
+				document.getElementById("startApp").innerHTML = "Nem tal&aacute;lhat&oacute; internet kapcsolat.<br>K&eacute;rem kapcsolja be az internetet &eacute;s pr&oacute;b&aacute;lja &uacute;jra.";
+			} else {
+				document.getElementById("startApp").innerHTML = "No internet connection detected!<br>Please turn on internet and try again.";
+			}
+		}                    
+    },
+
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {		
 		//window.plugin.notification.badge.clear();
 		
-        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
+        //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
     
 };
