@@ -58,7 +58,7 @@ function tokenHandler (result) {
 			token: result,
 			r: randomnumber
 		},
-		function() {
+		function(r) {
 			//alert(r);
 		}
 	);	

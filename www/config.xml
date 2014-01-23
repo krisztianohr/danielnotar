@@ -6,7 +6,7 @@
     version     = "1.0.0" >
 
     <!-- versionCode is optional and Android only -->    
-    <preference name="phonegap-version" value="3.1.0" />
+    <preference name="phonegap-version" value="3.0.0" />
 
     <name>Daniel Notar</name>
 
@@ -73,7 +73,10 @@
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
     <feature name="Media">
-        <param name="ios-package" value="CDVSound" />
+      <param name="ios-package" value="CDVSound" />
+    </feature>
+    <feature name="PushPlugin">
+      <param name="ios-package" value="PushPlugin"/>
     </feature>    
     
     <!-- URL WHITELIST -->
