@@ -72,6 +72,9 @@
         
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="Media">
+        <param name="ios-package" value="CDVSound" />
+    </feature>    
     
     <!-- URL WHITELIST -->
     <access origin="http://app.danielnotar.com" />
