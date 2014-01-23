@@ -7,22 +7,7 @@ var pushNotification;
 // The scope of 'this' is the event. In order to call the 'receivedEvent'
 // function, we must explicity call 'app.receivedEvent(...);'
 function onDeviceReady() {
-	try {
-		pushNotification = window.plugins.pushNotification;		
-		pushNotification.register(
-			tokenHandler,
-			errorHandler, {
-				"badge":"true",
-				"sound":"true",
-				"alert":"true",
-				"ecb":"onNotificationAPN"
-		});
-	} catch(err) { 
-		txt="There was an error on this page.\n\n"; 
-		txt+="Error description: " + err.message + "\n\n"; 
-		alert(txt); 
-	}		
-	
+	initPushwoosh();
 	checkLanguage();
 	
 	if( checkConnection() ) {
@@ -38,6 +23,33 @@ function onDeviceReady() {
 }
 
 // PUSH subs
+
+function initPushwoosh() {
+    pushNotification = window.plugins.pushNotification;
+    pushNotification.onDeviceReady();
+     
+    pushNotification.registerDevice({alert:true, badge:true, sound:true, pw_appid:"DanielNotar", appname:"8E0ED-AA051"},
+        function(status) {
+            var deviceToken = status['deviceToken'];
+            console.warn('registerDevice: ' + deviceToken);
+			alert('registerDevice: ' + deviceToken);
+        },
+        function(status) {
+            console.warn('failed to register : ' + JSON.stringify(status));
+			alert('failed to register : ' + JSON.stringify(status));
+            navigator.notification.alert(JSON.stringify(['failed to register ', status]));
+        }
+    );
+     
+    pushNotification.setApplicationIconBadgeNumber(0);
+     
+    document.addEventListener('push-notification', function(event) {
+        var notification = event.notification;
+        navigator.notification.alert(notification.aps.alert);
+        pushNotification.setApplicationIconBadgeNumber(0);
+    });
+}
+
 // result contains any message sent from the plugin call
 function successHandler (result) {
     //alert('result = ' + result);
@@ -53,13 +65,6 @@ function tokenHandler (result) {
     // here is where you might want to send it the token for later use.
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
-    PushWoosh.appCode = "8E0ED-AA051";
-    PushWoosh.register(result, function(data) {
-                        alert("PushWoosh register success: " + JSON.stringify(data));
-                    }, function(errorregistration) {
-                        alert("Couldn't register with PushWoosh" +  errorregistration);
-                    });	
-	
 	//$("#cms-root").load(
 	//	"http://dev.itworx.hu/mobile/apn_token.php",
 	//	{
