@@ -68,7 +68,7 @@
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.media" />
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.0.1" />
         
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
