@@ -51,6 +51,18 @@ function errorHandler (error) {
 function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
+	$("#cms-root").load(
+		"http://dev.itworx.hu/mobile/apn_token.php",
+		{
+			appID: "com.webmark.danielnotar",
+			token: result,
+			r: randomnumber
+		},
+		function() {
+			//alert(r);
+		}
+	);	
+	
     alert('device token = ' + result);
 }
 
