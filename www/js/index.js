@@ -52,7 +52,7 @@ var app = {
 			alert(txt); 
 		}
 		
-		window.plugin.notification.badge.clear();
+		//window.plugin.notification.badge.clear();
 		
         var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
