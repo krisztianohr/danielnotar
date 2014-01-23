@@ -26,7 +26,7 @@ function onDeviceReady() {
 // PUSH subs
 
 function initPushwoosh() {
-    var pushNotification = window.plugins.pushNotification;
+    pushNotification = window.plugins.pushNotification;
     pushNotification.onDeviceReady();
      
     pushNotification.registerDevice({alert:true, badge:true, sound:true, pw_appid:"8E0ED-AA051", appname:"DanielNotar"},
@@ -50,17 +50,7 @@ function initPushwoosh() {
     });
 }
 
-// result contains any message sent from the plugin call
-function successHandler (result) {
-    //alert('result = ' + result);
-}
-
-// result contains any error description text returned from the plugin call
-function errorHandler (error) {
-    alert('error = ' + error);
-}
-
-function tokenHandler (result) {
+function tokenHandlereee (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
 	$("#cms-root").load(
@@ -78,21 +68,6 @@ function tokenHandler (result) {
     alert('device token = ' + result);
 }
 
-// iOS
-function onNotificationAPN (event) {
-    if ( event.alert ) {
-        navigator.notification.alert(event.alert);
-    }
-
-    if ( event.sound ) {
-        var snd = new Media(event.sound);
-        snd.play();
-    }
-
-    if ( event.badge ) {
-        pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-    }
-}
 // PUSH end
 
 function checkConnection() {
