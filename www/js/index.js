@@ -52,8 +52,8 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		//alert(id);
-        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
+		alert(id);
+        //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
     
 };
@@ -83,10 +83,11 @@ function tokenHandler (result) {
 			r: randomnumber
 		},
 		function(r) {
-			//alert(r);
+			alert(r);
 		}
 	);
 	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
+	alert("token ok");
 }
 
 // iOS

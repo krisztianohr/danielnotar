@@ -81,6 +81,7 @@
     <access origin="http://danielnotar.com" subdomains="true" />
     <access origin="http://googleapis.com" subdomains="true" />
     <access origin="http://googleusercontent.com" subdomains="true" />
+    <access origin="http://dev.itworx.hu" />
     <access origin="http://itworx.hu" subdomains="true" />
     
 </widget>
