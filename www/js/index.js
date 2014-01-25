@@ -37,14 +37,6 @@ var app = {
 			alert(txt); 
 		}
 		
-		try {
-			window.plugin.notification.badge.clear();
-		} catch(err) { 
-			txt="There was an error on this app.\n\n"; 
-			txt+="Error description: " + err.message + "\n\n"; 
-			alert(txt); 
-		}
-
 		checkLanguage();
 		
 		if( checkConnection() ) {
