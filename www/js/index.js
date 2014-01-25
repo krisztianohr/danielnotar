@@ -32,7 +32,15 @@ var app = {
 					"ecb":"onNotificationAPN"
 			});
 		} catch(err) { 
-			txt="There was an error on this page.\n\n"; 
+			txt="There was an error on this app.\n\n"; 
+			txt+="Error description: " + err.message + "\n\n"; 
+			alert(txt); 
+		}
+		
+		try {
+			window.plugin.notification.badge.clear();
+		} catch(err) { 
+			txt="There was an error on this app.\n\n"; 
 			txt+="Error description: " + err.message + "\n\n"; 
 			alert(txt); 
 		}
@@ -52,8 +60,8 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		alert(id);
-        //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
+		//alert(id);
+        var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
     
 };
@@ -72,19 +80,19 @@ function errorHandler (error) {
 function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
-    alert('device token = ' + result);
-	//
-	//$("#cms-root").load(
-	//	"http://dev.itworx.hu/mobile/apn_token.php",
-	//	{
-	//		appID: "com.webmark.danielnotar",
-	//		token: result,
-	//		r: randomnumber
-	//	},
-	//	function(r) {
-	//		//alert(r);
-	//	}
-	//);
+    //alert('device token = ' + result);
+	
+	$("#cms-root").load(
+		"http://dev.itworx.hu/mobile/apn_token.php",
+		{
+			appID: "com.webmark.danielnotar",
+			token: result,
+			r: randomnumber
+		},
+		function(r) {
+			//alert(r);
+		}
+	);
 	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
 }
 

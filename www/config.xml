@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.webmark.danielnotar2"
+    id          = "com.webmark.danielnotar"
     versionCode = "100" 
     version     = "1.0.0" >
 
@@ -69,6 +69,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="com.phonegap.plugins.pushplugin" />
+    <gap:plugin name="de.appplant.cordova.plugin.badge" />
         
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
@@ -82,6 +83,5 @@
     <access origin="http://googleapis.com" subdomains="true" />
     <access origin="http://googleusercontent.com" subdomains="true" />
     <access origin="http://itworx.hu" subdomains="true" />
-    <access origin="*.pushwoosh.com" />
     
 </widget>
