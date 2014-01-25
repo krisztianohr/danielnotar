@@ -52,17 +52,15 @@ var app = {
 						token: devicetoken,
 						r: randomnumber
 					},
-					function(r) {
-						alert(r);
+					function() {
+						appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
 					}
 				);
+			} else {
+				appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
 			}
 			
-			//appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
 			//appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-			
-			window.plugins.childBrowser.showWebPage('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, { showLocationBar: false, showAddress: false, showNavigationBar: false });
-			
 			alert("loaded");			
 		} else {
 			if (appLanguage == "hu") {
