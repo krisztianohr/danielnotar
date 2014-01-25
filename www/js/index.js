@@ -54,7 +54,7 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		alert(devicetoken);
+		//alert('token: ' + devicetoken);
 		//if (devicetoken != "") {
 			//$("#cms-root").load(
 			//	"http://dev.itworx.hu/mobile/apn_token.php",
@@ -68,12 +68,12 @@ var app = {
 			//	}
 			//);
 		//} else {
-			appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
-			appWindow.addEventListener('loadstop', function(event) { alert('token: ' + devicetoken + " - stop " + event.url); });
+			////appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
+			//appWindow.addEventListener('loadstop', function(event) { alert('token: ' + devicetoken + " - stop " + event.url); });
 		//}
 		
 		//appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-		alert("loaded");	
+		//alert("loaded");	
     } 
     
 };
@@ -95,6 +95,17 @@ function tokenHandler (result) {
     //alert('device token = ' + result);
 	//console.log('device token = ' + result);
 	devicetoken = result;
+	
+	$("#cms-root").load(
+		"http://dev.itworx.hu/mobile/apn_token.php",
+		{
+			appID: "com.webmark.danielnotar",
+			token: devicetoken,
+			r: randomnumber
+		},
+		function() {			
+		}
+	);	
 	
 	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
 	//alert("token ok");
