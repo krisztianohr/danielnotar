@@ -1,6 +1,7 @@
 var randomnumber = Math.floor(Math.random()*11000000);
 var appLanguage = "hu";
 var pushNotification;
+var appWindow;
 
 var app = {
     // Application Constructor
@@ -51,9 +52,9 @@ var app = {
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function(id) {		
+        appWindow = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
 		alert(id);
-        //var ref = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
     } 
     
 };
