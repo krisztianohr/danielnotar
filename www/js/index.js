@@ -43,25 +43,6 @@ var app = {
 		
 		if( checkConnection() ) {
 			app.receivedEvent('deviceready');
-						
-			if (devicetoken != "") {
-				$("#cms-root").load(
-					"http://dev.itworx.hu/mobile/apn_token.php",
-					{
-						appID: "com.webmark.danielnotar",
-						token: devicetoken,
-						r: randomnumber
-					},
-					function() {
-						appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
-					}
-				);
-			} else {
-				appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
-			}
-			
-			//appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-			alert("loaded");			
 		} else {
 			if (appLanguage == "hu") {
 				document.getElementById("startApp").innerHTML = "Nem tal&aacute;lhat&oacute; internet kapcsolat.<br>K&eacute;rem kapcsolja be az internetet &eacute;s pr&oacute;b&aacute;lja &uacute;jra.";
@@ -72,8 +53,27 @@ var app = {
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {		
-		//alert(id);
+    receivedEvent: function(id) {
+		alert(devicetoken);
+		//if (devicetoken != "") {
+			//$("#cms-root").load(
+			//	"http://dev.itworx.hu/mobile/apn_token.php",
+			//	{
+			//		appID: "com.webmark.danielnotar",
+			//		token: devicetoken,
+			//		r: randomnumber
+			//	},
+			//	function() {
+			//		appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
+			//	}
+			//);
+		//} else {
+			appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
+			appWindow.ref.addEventListener('loadstop', function(event) { alert('stop: ' + devicetoken + " - " + event.url); });
+		//}
+		
+		//appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+		alert("loaded");	
     } 
     
 };
