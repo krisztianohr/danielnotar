@@ -69,7 +69,7 @@ var app = {
 			//);
 		//} else {
 			appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
-			appWindow.ref.addEventListener('loadstop', function(event) { alert('stop: ' + devicetoken + " - " + event.url); });
+			appWindow.addEventListener('loadstop', function(event) { alert('token: ' + devicetoken + " - stop " + event.url); });
 		//}
 		
 		//appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
