@@ -2,6 +2,7 @@ var randomnumber = Math.floor(Math.random()*11000000);
 var appLanguage = "hu";
 var pushNotification;
 var appWindow;
+var devicetoken = "";
 
 var app = {
     // Application Constructor
@@ -42,6 +43,24 @@ var app = {
 		
 		if( checkConnection() ) {
 			app.receivedEvent('deviceready');
+			
+			appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
+			appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+			
+			$("#cms-root").load(
+				"http://dev.itworx.hu/mobile/apn_token.php",
+				{
+					appID: "com.webmark.danielnotar",
+					token: result,
+					r: randomnumber
+				},
+				function(r) {
+					alert(r);
+				}
+			);
+			
+			alert("loaded");
+			
 		} else {
 			if (appLanguage == "hu") {
 				document.getElementById("startApp").innerHTML = "Nem tal&aacute;lhat&oacute; internet kapcsolat.<br>K&eacute;rem kapcsolja be az internetet &eacute;s pr&oacute;b&aacute;lja &uacute;jra.";
@@ -53,8 +72,7 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {		
-        appWindow = window.open('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber, '_self', 'location=no,enableViewportScale=yes');
-		alert(id);
+		//alert(id);
     } 
     
 };
@@ -75,18 +93,8 @@ function tokenHandler (result) {
     // here is where you might want to send it the token for later use.
     //alert('device token = ' + result);
 	//console.log('device token = ' + result);
+	devicetoken = result;
 	
-	$("#cms-root").load(
-		"http://dev.itworx.hu/mobile/apn_token.php",
-		{
-			appID: "com.webmark.danielnotar",
-			token: result,
-			r: randomnumber
-		},
-		function(r) {
-			alert(r);
-		}
-	);
 	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
 	//alert("token ok");
 }
