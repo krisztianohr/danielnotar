@@ -72,7 +72,7 @@ function errorHandler (error) {
 function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
-    alert('device token = ' + result);
+    //alert('device token = ' + result);
 	//console.log('device token = ' + result);
 	
 	$("#cms-root").load(
@@ -87,7 +87,7 @@ function tokenHandler (result) {
 		}
 	);
 	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
-	alert("token ok");
+	//alert("token ok");
 }
 
 // iOS
