@@ -46,9 +46,6 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		alert(id);
-		console.log(1);
-		Console.log(2);
     } 
     
 };
@@ -56,6 +53,12 @@ var app = {
 $(document).ready(function(){
 	$("#contentFrame").width( $(window).width() );
 	$("#contentFrame").height( $(window).height() );
+	
+	alert($(window).width());
+	alert($(window).height());
+	alert($(window).innerHeight());
+	alert(window.height);
+	alert(window.innerHeight);
 	
 	//$("#contentStart").hide();
 	//$("#contentNoConnection").hide();
