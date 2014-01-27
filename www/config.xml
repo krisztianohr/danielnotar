@@ -2,8 +2,8 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
     id          = "com.webmark.danielnotar"
-    versionCode = "100" 
-    version     = "1.0.0" >
+    versionCode = "110" 
+    version     = "1.1.0" >
 
     <!-- versionCode is optional and Android only -->    
     <preference name="phonegap-version" value="3.0.0" />
@@ -84,5 +84,7 @@
     <access origin="http://googleusercontent.com" subdomains="true" />
     <access origin="http://dev.itworx.hu" />
     <access origin="http://itworx.hu" subdomains="true" />
+    <access origin="http://facebook.com" subdomains="true" />
+    <access origin="https://facebook.com" subdomains="true" />
     
 </widget>
