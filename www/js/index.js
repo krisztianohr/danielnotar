@@ -54,11 +54,10 @@ $(document).ready(function(){
 	$("#contentFrame").width( $(window).width() );
 	$("#contentFrame").height( $(window).height() );
 	
-	alert($(window).width());
-	alert($(window).height());
-	alert($(window).innerHeight());
-	alert(window.height);
-	alert(window.innerHeight);
+	alert("w h=" + window.height);
+	alert("w ih=" + window.innerHeight);
+	alert("jq h=" + $(window).height());
+	alert("jq ih=" + $(window).innerHeight());
 	
 	//$("#contentStart").hide();
 	//$("#contentNoConnection").hide();
