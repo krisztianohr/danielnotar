@@ -4,16 +4,37 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, width=640" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link href='http://fonts.googleapis.com/css?family=Andada&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        
+		<!--<link rel="stylesheet" type="text/css" href="http://app.danielnotar.com/inc/app/stilus.css" />-->
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link href='http://fonts.googleapis.com/css?family=Andada|Open+Sans:400,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <title>com.webmark.danielnotar</title>
     </head>
-	
-	<frameset rows="10,*" frameborder="no" border="0" framespacing="0">
-		<frame src="main.html" name="topFrame" scrolling="No" noresize="noresize" id="topFrame" title="topFrame" />
-		<frame src="http://app.danielnotar.com" name="mainFrame" id="mainFrame" title="mainFrame" />
-	</frameset>	
-	
     <body>
-	</body>
+		<div id="cms-root" style="display: none"></div>
+		<!-- screens -->
+		
+		<!-- screen LOADING -->
+		<div id="contentStart" class="content">			
+		  <div id="app-logo"></div>
+		  <div class="startApp">LOADING...</div>
+		</div>
+		
+		<!-- screen no internet -->
+		<div id="contentNoConnection" class="content" style="display: none">			
+		  <div id="app-logo"></div>
+		  <div class="startApp" align="center">Please switch on your Internet connection.</div>
+		</div>
+		
+		<!-- screen APP -->
+		<div id="contentFrame" class="content" style="display: none"></div>
+		
+		<!-- screens END -->
+        <script src="phonegap.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>		
+    </body>
 </html>

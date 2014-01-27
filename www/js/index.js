@@ -54,16 +54,8 @@ var app = {
 };
 
 $(document).ready(function(){
-	//alert("w ih=" + window.innerHeight);	
-	//$("#contentStart").hide();
-	//$("#contentNoConnection").hide();
-	//$("#contentIframe").show();
-	//alert($("#mainFrame", window.parent.document).attr("src"));
-	
-	//$("#mainFrame", parent.document).css("height", 170);
+	setTimeout(loadWebsite, 3000);
 });
-
-alert(window.parent.frames["mainFrame"].document.location.href);
 
 // PUSH subs
 // result contains any message sent from the plugin call
@@ -119,17 +111,12 @@ function checkConnection() {
     if (networkState == Connection.UNKNOWN || networkState == Connection.NONE) {
 		$("#contentStart").hide();
 		$("#contentNoConnection").show();
-		$("#contentIframe").hide();
-		console.log($("#contentIframe").attr("src"));
         return false;   
     } else {
 		$("#contentStart").hide();
 		$("#contentNoConnection").hide();
-		$("#contentIframe").show();
-		console.log($("#contentIframe").attr("src"));
         return true;    
     }
-	setTimeout(checkConnection, 5000);
 }
 
 function checkLanguage() {
@@ -142,4 +129,8 @@ function checkLanguage() {
 	  }
 	);
 	appLanguage = appLanguage.substr(0, 2);
+}
+
+function loadWebsite() {
+	document.location.replace("http://app.danielnotar.com/");	
 }
