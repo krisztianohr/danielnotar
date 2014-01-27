@@ -39,8 +39,8 @@ var app = {
 			alert(txt); 
 		}
 		
-		$("#contentFrame").width( $(window).width() );
-		$("#contentFrame").height( window.innerHeight );
+		//$("#contentFrame").width( $(window).width() );
+		//$("#contentFrame").height( window.innerHeight );
 		
 		checkLanguage();		
 		checkConnection();
