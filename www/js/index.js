@@ -39,6 +39,9 @@ var app = {
 			alert(txt); 
 		}
 		
+		$("#contentFrame").width( $(window).width() );
+		$("#contentFrame").height( window.innerHeight );
+		
 		checkLanguage();		
 		checkConnection();
 		app.receivedEvent('deviceready');
@@ -51,13 +54,10 @@ var app = {
 };
 
 $(document).ready(function(){
-	$("#contentFrame").width( $(window).width() );
-	$("#contentFrame").height( window.innerHeight );
-	
 	//alert("w ih=" + window.innerHeight);	
-	$("#contentStart").hide();
+	//$("#contentStart").hide();
 	//$("#contentNoConnection").hide();
-	$("#contentIframe").show();
+	//$("#contentIframe").show();
 });
 
 // PUSH subs
