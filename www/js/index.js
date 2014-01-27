@@ -119,7 +119,8 @@ function checkConnection() {
     } else {
 		$("#contentStart").hide();
 		$("#contentNoConnection").hide();
-		$("#contentIframe").show();		
+		$("#contentIframe").show();
+		console.log($("#contentIframe").attr("src"));
         return true;    
     }
 	setTimeout(checkConnection, 5000);
