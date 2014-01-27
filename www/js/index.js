@@ -39,11 +39,10 @@ var app = {
 			alert(txt); 
 		}
 		
-		//$("#contentFrame").width( $(window).width() );
-		//$("#contentFrame").height( window.innerHeight );
-		
 		checkLanguage();		
-		checkConnection();
+		if (checkConnection() == true) {
+			setTimeout(loadWebsite, 3000);
+		}
 		app.receivedEvent('deviceready');
     },
 
@@ -53,8 +52,7 @@ var app = {
     
 };
 
-$(document).ready(function(){
-	setTimeout(loadWebsite, 3000);
+$(document).ready(function(){	
 });
 
 // PUSH subs
@@ -113,7 +111,7 @@ function checkConnection() {
 		$("#contentNoConnection").show();
         return false;   
     } else {
-		$("#contentStart").hide();
+//		$("#contentStart").hide();
 		$("#contentNoConnection").hide();
         return true;    
     }
