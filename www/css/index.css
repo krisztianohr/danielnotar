@@ -24,7 +24,7 @@ img {
 }
 
 /*-----content*/
-#content {
+.content {
 	background: -webkit-linear-gradient(top, #fff0c1, #efb65b);
 	background: -moz-linear-gradient(top, #fff0c1, #efb65b);
 	background: -ms-linear-gradient(top, #fff0c1, #efb65b);
@@ -39,8 +39,8 @@ img {
 	background:url(../img/app-logo.png) no-repeat center;
 	padding:250px 0 0;
 }
-#startApp {
-	font-size:46px;
+.startApp {
+	font-size:38px;
 }
 
 /*-----------------------------------------screen2*/

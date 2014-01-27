@@ -39,44 +39,25 @@ var app = {
 			alert(txt); 
 		}
 		
-		checkLanguage();
-		
-		if( checkConnection() ) {
-			app.receivedEvent('deviceready');
-		} else {
-			if (appLanguage == "hu") {
-				document.getElementById("startApp").innerHTML = "Nem tal&aacute;lhat&oacute; internet kapcsolat.<br>K&eacute;rem kapcsolja be az internetet &eacute;s pr&oacute;b&aacute;lja &uacute;jra.";
-			} else {
-				document.getElementById("startApp").innerHTML = "No internet connection detected!<br>Please turn on internet and try again.";
-			}
-		}                    
+		checkLanguage();		
+		checkConnection();
+		app.receivedEvent('deviceready');
     },
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		//alert('token: ' + devicetoken);
-		//if (devicetoken != "") {
-			//$("#cms-root").load(
-			//	"http://dev.itworx.hu/mobile/apn_token.php",
-			//	{
-			//		appID: "com.webmark.danielnotar",
-			//		token: devicetoken,
-			//		r: randomnumber
-			//	},
-			//	function() {
-			//		appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
-			//	}
-			//);
-		//} else {
-			////appWindow = window.open(encodeURI('http://app.danielnotar.com/?appLanguage=' + appLanguage + '&r=' + randomnumber), '_self', 'location=no,enableViewportScale=yes,suppressesIncrementalRendering=yes,presentationstyle=fliphorizontal');
-			//appWindow.addEventListener('loadstop', function(event) { alert('token: ' + devicetoken + " - stop " + event.url); });
-		//}
-		
-		//appWindow.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-		//alert("loaded");	
     } 
     
 };
+
+$(document).ready(function(){
+	$("#contentFrame").width( $(window).width() );
+	$("#contentFrame").height( $(window).height() );
+	
+	//$("#contentStart").hide();
+	//$("#contentNoConnection").hide();
+	//$("#contentIframe").show();
+});
 
 // PUSH subs
 // result contains any message sent from the plugin call
@@ -93,7 +74,6 @@ function tokenHandler (result) {
     // Your iOS push server needs to know the token before it can push to this device
     // here is where you might want to send it the token for later use.
     //alert('device token = ' + result);
-	//console.log('device token = ' + result);
 	devicetoken = result;
 	
 	$("#cms-root").load(
@@ -107,8 +87,7 @@ function tokenHandler (result) {
 		}
 	);	
 	
-	//pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
-	//alert("token ok");
+	pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, 0);
 }
 
 // iOS
@@ -132,10 +111,18 @@ function checkConnection() {
     var networkState = navigator.connection.type;
 
     if (networkState == Connection.UNKNOWN || networkState == Connection.NONE) {
+		$("#contentStart").hide();
+		$("#contentNoConnection").show();
+		$("#contentIframe").hide();
+		console.log($("#contentIframe").attr("src"));
         return false;   
     } else {
+		$("#contentStart").hide();
+		$("#contentNoConnection").hide();
+		$("#contentIframe").show();		
         return true;    
     }
+	setTimeout(checkConnection, 5000);
 }
 
 function checkLanguage() {
