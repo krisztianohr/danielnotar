@@ -58,7 +58,12 @@ $(document).ready(function(){
 	//$("#contentStart").hide();
 	//$("#contentNoConnection").hide();
 	//$("#contentIframe").show();
+	//alert($("#mainFrame", window.parent.document).attr("src"));
+	
+	//$("#mainFrame", parent.document).css("height", 170);
 });
+
+alert(window.parent.frames["mainFrame"].document.location.href);
 
 // PUSH subs
 // result contains any message sent from the plugin call
