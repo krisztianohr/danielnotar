@@ -46,6 +46,9 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		alert(id);
+		console.log(1);
+		Console.log(2);
     } 
     
 };

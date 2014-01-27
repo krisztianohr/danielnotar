@@ -4,7 +4,6 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     width:100%;
-	height:100%;
 	background:#efb65b;
 	margin:0;
 	padding:0;
@@ -46,8 +45,6 @@ img {
 
 /*-----------------------------------------screen2*/
 .iframe {
-	width:100%;
-    height:100%;
 }
 
 /*common*/
